@@ -84,31 +84,12 @@ namespace CalculatorUI
         }
 
 
-
-
-        private void buttonDivide_Click(object sender, RoutedEventArgs e)
+        private void buttonOperation_Click(object sender, RoutedEventArgs e)
         {
-            operation = "/";
+            operation = ((Button)sender).Content.ToString();
             totalInputTextBox.Text = number1.ToString() + " " + operation + " ";
         }
 
-        private void buttonMultiply_Click(object sender, RoutedEventArgs e)
-        {
-            operation = "*";
-            totalInputTextBox.Text = number1.ToString() + " " + operation + " ";
-        }
-
-        private void buttonSubstract_Click(object sender, RoutedEventArgs e)
-        {
-            operation = "-";
-            totalInputTextBox.Text = number1.ToString() + " " + operation + " ";
-        }
-
-        private void buttonAdd_Click(object sender, RoutedEventArgs e)
-        {
-            operation = "+";
-            totalInputTextBox.Text = number1.ToString() + " " + operation + " ";
-        }
 
         private void buttonResult_Click(object sender, RoutedEventArgs e)
         {
@@ -130,9 +111,6 @@ namespace CalculatorUI
             }
             
         }
-
-
-
 
 
         private void buttonClearAll_Click(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorUI"
         mc:Ignorable="d"
-        Title="Calculator" Height="350" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontSize="18" FontFamily="Segoe UI Light">
+        Title="Calculator" Height="350" Width="250" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontSize="18" FontFamily="Segoe UI Light">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
@@ -23,46 +23,41 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         
-        <!--Row 1-->
+        <!--Display, Row 1-->
         <Border Grid.Row="1" Grid.Column="1" Height="60" Margin="5" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="4">
             <StackPanel Orientation="Vertical">
                 <TextBlock x:Name="totalInputTextBox" Margin="5,0,5,0" FontSize="14" TextAlignment="Right" />
                 <TextBlock x:Name="currentInputTextBox" Margin="5,0,5,0" FontSize="24" TextAlignment="Right" Text="0" />
             </StackPanel>
         </Border>
-        
-        <!--Row 2-->
-        <Button x:Name="buttonClearAll" Grid.Row="2" Grid.Column="1" Margin="5" Content="C" Click="buttonClearAll_Click"/>
-        <Button x:Name="buttonClearCurrent" Grid.Row="2" Grid.Column="2" Margin="5" Content="CE" Click="buttonClearCurrent_Click"/>
-        <Button x:Name="buttonDivide" Grid.Row="2" Grid.Column="4" Margin="5" Content="/" Click="buttonDivide_Click"/>
-        <Button x:Name="buttonNegate" Grid.Row="2" Grid.Column="3" Margin="5" Content="+/-" Click="buttonNegate_Click" />
 
-        <!--Row 3-->
-        <Button x:Name="buttonNum7" Grid.Row="3" Grid.Column="1" Margin="5" Content="7" Click="buttonNum_Click"/>
-        <Button x:Name="buttonNum8" Grid.Row="3" Grid.Column="2" Margin="5" Content="8" Click="buttonNum_Click"/>
-        <Button x:Name="buttonNum9" Grid.Row="3" Grid.Column="3" Margin="5" Content="9" Click="buttonNum_Click"/>
-        <Button x:Name="buttonMultiply" Grid.Row="3" Grid.Column="4" Margin="5" Content="*" Click="buttonMultiply_Click"/>
+        <!--Operation Buttons-->
+        <Button x:Name="buttonDivide" Grid.Row="2" Grid.Column="4" Margin="5" Content="/" Click="buttonOperation_Click"/>
+        <Button x:Name="buttonMultiply" Grid.Row="3" Grid.Column="4" Margin="5" Content="*" Click="buttonOperation_Click"/>
+        <Button x:Name="buttonSubstract" Grid.Row="4" Grid.Column="4" Margin="5" Content="-" Click="buttonOperation_Click"/>
+        <Button x:Name="buttonAdd" Grid.Row="5" Grid.Column="4" Margin="5" Content="+" Click="buttonOperation_Click"/>
+        <Button x:Name="buttonResult" Grid.Row="6" Grid.Column="4" Margin="5" Content="=" Click="buttonResult_Click"/>
 
-        <!--Row 4-->
-        <Button x:Name="buttonNum4" Grid.Row="4" Grid.Column="1" Margin="5" Content="4" Click="buttonNum_Click"/>
-        <Button x:Name="buttonNum5" Grid.Row="4" Grid.Column="2" Margin="5" Content="5" Click="buttonNum_Click"/>
-        <Button x:Name="buttonNum6" Grid.Row="4" Grid.Column="3" Margin="5" Content="6" Click="buttonNum_Click"/>
-        <Button x:Name="buttonSubstract" Grid.Row="4" Grid.Column="4" Margin="5" Content="-" Click="buttonSubstract_Click"/>
-
-        <!--Row 5-->
+        <!--Number Buttons-->
         <Button x:Name="buttonNum1" Grid.Row="5" Grid.Column="1" Margin="5" Content="1" Click="buttonNum_Click"/>
         <Button x:Name="buttonNum2" Grid.Row="5" Grid.Column="2" Margin="5" Content="2" Click="buttonNum_Click"/>
         <Button x:Name="buttonNum3" Grid.Row="5" Grid.Column="3" Margin="5" Content="3" Click="buttonNum_Click"/>
-        <Button x:Name="buttonAdd" Grid.Row="5" Grid.Column="4" Margin="5" Content="+" Click="buttonAdd_Click"/>
-
-        <!--Row 6-->
+        <Button x:Name="buttonNum4" Grid.Row="4" Grid.Column="1" Margin="5" Content="4" Click="buttonNum_Click"/>
+        <Button x:Name="buttonNum5" Grid.Row="4" Grid.Column="2" Margin="5" Content="5" Click="buttonNum_Click"/>
+        <Button x:Name="buttonNum6" Grid.Row="4" Grid.Column="3" Margin="5" Content="6" Click="buttonNum_Click"/>
+        <Button x:Name="buttonNum7" Grid.Row="3" Grid.Column="1" Margin="5" Content="7" Click="buttonNum_Click"/>
+        <Button x:Name="buttonNum8" Grid.Row="3" Grid.Column="2" Margin="5" Content="8" Click="buttonNum_Click"/>
+        <Button x:Name="buttonNum9" Grid.Row="3" Grid.Column="3" Margin="5" Content="9" Click="buttonNum_Click"/>
         <Button x:Name="buttonNum0" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Content="0" Click="buttonNum_Click"/>
         <Button x:Name="buttonDot" Grid.Row="6" Grid.Column="3" Margin="5" Content="." IsEnabled="False" />
-        <Button x:Name="buttonResult" Grid.Row="6" Grid.Column="4" Margin="5" Content="=" Click="buttonResult_Click"/>
+
+        <!--Utility Buttons-->
+        <Button x:Name="buttonClearAll" Grid.Row="2" Grid.Column="1" Margin="5" Content="C" Click="buttonClearAll_Click"/>
+        <Button x:Name="buttonClearCurrent" Grid.Row="2" Grid.Column="2" Margin="5" Content="CE" Click="buttonClearCurrent_Click"/>
+        <Button x:Name="buttonNegate" Grid.Row="2" Grid.Column="3" Margin="5" Content="+/-" Click="buttonNegate_Click" />
 
     </Grid>
 </Window>
