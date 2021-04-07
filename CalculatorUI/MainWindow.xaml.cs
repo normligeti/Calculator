@@ -77,56 +77,11 @@ namespace CalculatorUI
             }
         }
 
-        private void buttonNum1_Click(object sender, RoutedEventArgs e)
+        
+        private void buttonNum_Click(object sender, RoutedEventArgs e)
         {
-            ManageInput(1);
+            ManageInput(Int32.Parse(((Button)sender).Content.ToString()));
         }
-
-        private void buttonNum2_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(2);
-        }
-
-        private void buttonNum3_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(3);
-        }
-
-        private void buttonNum4_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(4);
-        }
-
-        private void buttonNum5_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(5);
-        }
-
-        private void buttonNum6_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(6);
-        }
-
-        private void buttonNum7_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(7);
-        }
-
-        private void buttonNum8_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(8);
-        }
-
-        private void buttonNum9_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(9);
-        }
-
-        private void buttonNum0_Click(object sender, RoutedEventArgs e)
-        {
-            ManageInput(0);
-        }
-
 
 
 
@@ -201,6 +156,20 @@ namespace CalculatorUI
                 number2 = 0;
             }
             currentInputTextBox.Text = "0";
+        }
+
+        private void buttonNegate_Click(object sender, RoutedEventArgs e)
+        {
+            if (operation == "")
+            {
+                number1 *= (-1);
+                currentInputTextBox.Text = number1.ToString();
+            }
+            else
+            {
+                number2 *= (-1);
+                currentInputTextBox.Text = number2.ToString();
+            }
         }
     }
 }
