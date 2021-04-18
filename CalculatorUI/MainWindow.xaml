@@ -52,7 +52,7 @@
         <Button x:Name="buttonNum8" Grid.Row="3" Grid.Column="2" Margin="5" Content="8" Click="buttonNum_Click"/>
         <Button x:Name="buttonNum9" Grid.Row="3" Grid.Column="3" Margin="5" Content="9" Click="buttonNum_Click"/>
         <Button x:Name="buttonNum0" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Content="0" Click="buttonNum_Click"/>
-        <Button x:Name="buttonDot" Grid.Row="6" Grid.Column="3" Margin="5" Content="." IsEnabled="False" />
+        <Button x:Name="buttonComma" Grid.Row="6" Grid.Column="3" Margin="5" Content="," Click="buttonComma_Click"/>
 
         <!--Utility Buttons-->
         <Button x:Name="buttonClearAll" Grid.Row="2" Grid.Column="1" Margin="5" Content="C" Click="buttonClearAll_Click"/>
