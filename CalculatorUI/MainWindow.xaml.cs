@@ -32,8 +32,6 @@ namespace CalculatorUI
 
         private void CalculateAndShowResult()
         {
-            //num1 = double.Parse(number);
-            //num2 = double.Parse(currentInputTextBox.Text);
             double result = 0;
 
             switch (operation)
@@ -85,14 +83,10 @@ namespace CalculatorUI
 
         private void buttonResult_Click(object sender, RoutedEventArgs e)
         {
-            totalInputTextBox.Text += currentInputTextBox.Text + " " + "=";
-            //CalculateAndShowResult();
-            //isOperationClicked = true;
-
-            //totalInputTextBox.Text = "";
-
+            
             if (!isOperationClicked)
             {
+                totalInputTextBox.Text += currentInputTextBox.Text + " " + "=";
                 num1 = double.Parse(number);
                 num2 = double.Parse(currentInputTextBox.Text);
                 CalculateAndShowResult();
@@ -100,6 +94,7 @@ namespace CalculatorUI
             }
             else
             {
+                totalInputTextBox.Text = currentInputTextBox.Text + " " + operation + " " + num2.ToString() + " =";
                 num1 = double.Parse(currentInputTextBox.Text);
                 CalculateAndShowResult();
                 isOperationClicked = true;
