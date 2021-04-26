@@ -21,9 +21,10 @@ namespace CalculatorUI
     public partial class MainWindow : Window
     {
         double num1, num2;
-        private string number = "";
+        private string numberInput = "";
         private string operation = "";
         private bool isOperationClicked = false;
+        private bool isEqualsClicked = false;
 
         public MainWindow()
         {
@@ -49,18 +50,20 @@ namespace CalculatorUI
                     result = num1 + num2;
                     break;
             }
+            totalInputTextBox.Text = num1.ToString() + " " + operation + " " + num2.ToString() + " =";
             currentInputTextBox.Text = result.ToString();
         }
 
         private void buttonNum_Click(object sender, RoutedEventArgs e)
         {
 
-            if (currentInputTextBox.Text == "0" || isOperationClicked)
+            if (currentInputTextBox.Text == "0" || isOperationClicked || isEqualsClicked)
             {
                 currentInputTextBox.Text = "";
             }
             currentInputTextBox.Text += ((Button)sender).Content.ToString();
             isOperationClicked = false;
+            //isEqualsClicked = false;
 
         }
 
@@ -75,29 +78,28 @@ namespace CalculatorUI
         private void buttonOperation_Click(object sender, RoutedEventArgs e)
         {
             operation = ((Button)sender).Content.ToString();
-            number = currentInputTextBox.Text;
-            totalInputTextBox.Text = number + " " + operation + " "; 
+            numberInput = currentInputTextBox.Text;
+            totalInputTextBox.Text = numberInput + " " + operation + " "; 
             isOperationClicked = true;
+            isEqualsClicked = false;
         }
 
 
         private void buttonResult_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (!isOperationClicked)
+            if (operation != "")
             {
-                totalInputTextBox.Text += currentInputTextBox.Text + " " + "=";
-                num1 = double.Parse(number);
-                num2 = double.Parse(currentInputTextBox.Text);
+                if (!isEqualsClicked)
+                {
+                    num1 = double.Parse(numberInput);
+                    num2 = double.Parse(currentInputTextBox.Text);
+                }
+                else
+                {
+                    num1 = double.Parse(currentInputTextBox.Text);
+                }
                 CalculateAndShowResult();
-                isOperationClicked = true;
-            }
-            else
-            {
-                totalInputTextBox.Text = currentInputTextBox.Text + " " + operation + " " + num2.ToString() + " =";
-                num1 = double.Parse(currentInputTextBox.Text);
-                CalculateAndShowResult();
-                isOperationClicked = true;
+                isEqualsClicked = true;
             }
         }
 
