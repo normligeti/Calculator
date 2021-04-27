@@ -113,17 +113,24 @@ namespace CalculatorUI
 
         private void buttonClearAll_Click(object sender, RoutedEventArgs e)
         {
-            
+            numberInput = "";
+            operation = "";
+            isOperationClicked = false;
+            isEqualsClicked = false;
+            currentInputTextBox.Text = "0";
+            totalInputTextBox.Text = "";
         }
 
         private void buttonClearCurrent_Click(object sender, RoutedEventArgs e)
         {
-            
+            currentInputTextBox.Text = "0";
         }
 
         private void buttonNegate_Click(object sender, RoutedEventArgs e)
         {
-            
+            double i = double.Parse(currentInputTextBox.Text);
+            i *= -1;
+            currentInputTextBox.Text = i.ToString();
         }
 
     }
