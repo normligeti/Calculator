@@ -57,13 +57,20 @@ namespace CalculatorUI
         private void buttonNum_Click(object sender, RoutedEventArgs e)
         {
 
-            if (currentInputTextBox.Text == "0" || isOperationClicked || isEqualsClicked)
+            if (currentInputTextBox.Text == "0" || isOperationClicked)
             {
                 currentInputTextBox.Text = "";
             }
+            if (isEqualsClicked)
+            {
+                currentInputTextBox.Text = "";
+                totalInputTextBox.Text = "";
+                numberInput = "";
+                operation = "";
+            }
             currentInputTextBox.Text += ((Button)sender).Content.ToString();
             isOperationClicked = false;
-            //isEqualsClicked = false;
+            isEqualsClicked = false;
 
         }
 
