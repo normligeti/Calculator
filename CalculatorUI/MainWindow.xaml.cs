@@ -20,11 +20,12 @@ namespace CalculatorUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        double num1, num2;
+        private double num1, num2;
         private string numberInput = "";
         private string operation = "";
         private bool isOperationClicked = false;
         private bool isEqualsClicked = false;
+        private const int maxDigitCount = 12;
 
         public MainWindow()
         {
@@ -50,43 +51,49 @@ namespace CalculatorUI
                     result = num1 + num2;
                     break;
             }
-            totalInputTextBox.Text = num1.ToString() + " " + operation + " " + num2.ToString() + " =";
-            currentInputTextBox.Text = result.ToString();
+            totalInputTextBlock.Text = num1.ToString() + " " + operation + " " + num2.ToString() + " =";
+            currentInputTextBlock.Text = result.ToString();
         }
 
         private void buttonNum_Click(object sender, RoutedEventArgs e)
         {
 
-            if (currentInputTextBox.Text == "0" || isOperationClicked)
+            if (currentInputTextBlock.Text == "0" || isOperationClicked)
             {
-                currentInputTextBox.Text = "";
+                currentInputTextBlock.Text = "";
             }
             if (isEqualsClicked)
             {
-                currentInputTextBox.Text = "";
-                totalInputTextBox.Text = "";
+                currentInputTextBlock.Text = "";
+                totalInputTextBlock.Text = "";
                 numberInput = "";
                 operation = "";
             }
-            currentInputTextBox.Text += ((Button)sender).Content.ToString();
-            isOperationClicked = false;
-            isEqualsClicked = false;
+
+            if (currentInputTextBlock.Text.Count() < maxDigitCount)
+            {
+                currentInputTextBlock.Text += ((Button)sender).Content.ToString();
+                isOperationClicked = false;
+                isEqualsClicked = false;
+            }
 
         }
 
         private void buttonComma_Click(object sender, RoutedEventArgs e)
         {
-            if (!currentInputTextBox.Text.Contains(","))
+            if (!currentInputTextBlock.Text.Contains(","))
             {
-                currentInputTextBox.Text += ((Button)sender).Content.ToString();
+                currentInputTextBlock.Text += ((Button)sender).Content.ToString();
+                isOperationClicked = false;
+                isEqualsClicked = false;
             }
         }
 
         private void buttonOperation_Click(object sender, RoutedEventArgs e)
         {
             operation = ((Button)sender).Content.ToString();
-            numberInput = currentInputTextBox.Text;
-            totalInputTextBox.Text = numberInput + " " + operation + " "; 
+            numberInput = currentInputTextBlock.Text;
+            totalInputTextBlock.Text = numberInput + " " + operation + " "; 
             isOperationClicked = true;
             isEqualsClicked = false;
         }
@@ -99,11 +106,11 @@ namespace CalculatorUI
                 if (!isEqualsClicked)
                 {
                     num1 = double.Parse(numberInput);
-                    num2 = double.Parse(currentInputTextBox.Text);
+                    num2 = double.Parse(currentInputTextBlock.Text);
                 }
                 else
                 {
-                    num1 = double.Parse(currentInputTextBox.Text);
+                    num1 = double.Parse(currentInputTextBlock.Text);
                 }
                 CalculateAndShowResult();
                 isEqualsClicked = true;
@@ -117,20 +124,20 @@ namespace CalculatorUI
             operation = "";
             isOperationClicked = false;
             isEqualsClicked = false;
-            currentInputTextBox.Text = "0";
-            totalInputTextBox.Text = "";
+            currentInputTextBlock.Text = "0";
+            totalInputTextBlock.Text = "";
         }
 
         private void buttonClearCurrent_Click(object sender, RoutedEventArgs e)
         {
-            currentInputTextBox.Text = "0";
+            currentInputTextBlock.Text = "0";
         }
 
         private void buttonNegate_Click(object sender, RoutedEventArgs e)
         {
-            double i = double.Parse(currentInputTextBox.Text);
+            double i = double.Parse(currentInputTextBlock.Text);
             i *= -1;
-            currentInputTextBox.Text = i.ToString();
+            currentInputTextBlock.Text = i.ToString();
         }
 
     }
