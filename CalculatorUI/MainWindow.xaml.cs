@@ -91,11 +91,31 @@ namespace CalculatorUI
 
         private void buttonOperation_Click(object sender, RoutedEventArgs e)
         {
-            operation = ((Button)sender).Content.ToString();
-            numberInput = currentInputTextBlock.Text;
-            totalInputTextBlock.Text = numberInput + " " + operation + " "; 
-            isOperationClicked = true;
-            isEqualsClicked = false;
+            //operation = ((Button)sender).Content.ToString();
+            //numberInput = currentInputTextBlock.Text;
+            //totalInputTextBlock.Text = numberInput + " " + operation + " ";
+            //isOperationClicked = true;
+            //isEqualsClicked = false;
+
+            if (operation == "" || isOperationClicked)
+            {
+                operation = ((Button)sender).Content.ToString();
+                numberInput = currentInputTextBlock.Text;
+                totalInputTextBlock.Text = numberInput + " " + operation + " ";
+                isOperationClicked = true;
+                isEqualsClicked = false;
+            }
+            else
+            {
+                num1 = double.Parse(numberInput);
+                num2 = double.Parse(currentInputTextBlock.Text);
+                CalculateAndShowResult();
+                operation = ((Button)sender).Content.ToString();
+                numberInput = currentInputTextBlock.Text;
+                isOperationClicked = true;
+            }
+
+
         }
 
 
