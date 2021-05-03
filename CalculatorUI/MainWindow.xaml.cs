@@ -57,7 +57,6 @@ namespace CalculatorUI
 
         private void buttonNum_Click(object sender, RoutedEventArgs e)
         {
-
             if (currentInputTextBlock.Text == "0" || isOperationClicked)
             {
                 currentInputTextBlock.Text = "";
@@ -76,7 +75,6 @@ namespace CalculatorUI
                 isOperationClicked = false;
                 isEqualsClicked = false;
             }
-
         }
 
         private void buttonComma_Click(object sender, RoutedEventArgs e)
@@ -91,13 +89,7 @@ namespace CalculatorUI
 
         private void buttonOperation_Click(object sender, RoutedEventArgs e)
         {
-            //operation = ((Button)sender).Content.ToString();
-            //numberInput = currentInputTextBlock.Text;
-            //totalInputTextBlock.Text = numberInput + " " + operation + " ";
-            //isOperationClicked = true;
-            //isEqualsClicked = false;
-
-            if (operation == "" || isOperationClicked)
+            if (operation == "" || isOperationClicked || isEqualsClicked)
             {
                 operation = ((Button)sender).Content.ToString();
                 numberInput = currentInputTextBlock.Text;
@@ -114,10 +106,7 @@ namespace CalculatorUI
                 numberInput = currentInputTextBlock.Text;
                 isOperationClicked = true;
             }
-
-
         }
-
 
         private void buttonResult_Click(object sender, RoutedEventArgs e)
         {
@@ -136,7 +125,6 @@ namespace CalculatorUI
                 isEqualsClicked = true;
             }
         }
-
 
         private void buttonClearAll_Click(object sender, RoutedEventArgs e)
         {
